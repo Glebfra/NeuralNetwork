@@ -4,6 +4,9 @@ import numpy
 from Cython.Build import cythonize
 
 setup(
-    ext_modules=cythonize('Layers/AbstractLayer.pyx'),
+    ext_modules=cythonize(
+        module_list=['Layers/*.pyx'],
+        build_dir="build"
+    ),
     include_dirs=[numpy.get_include()],
 )
