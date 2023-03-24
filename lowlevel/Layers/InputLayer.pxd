@@ -1,4 +1,6 @@
+import numpy as np
+cimport numpy as np
 from AbstractLayer cimport AbstractLayer
 
 cdef class InputLayer(AbstractLayer):
-    pass
+    cpdef np.ndarray feed_forward(self, np.ndarray inputs)
