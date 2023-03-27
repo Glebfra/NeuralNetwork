@@ -20,3 +20,6 @@ cdef class AbstractLayer:
         self.inputs = inputs.reshape((len(inputs), 1))
         self.outputs = self.activation_function(self.weights @ self.inputs + self.biases)
         return self.outputs
+
+    cpdef np.ndarray get_derivative_error(self):
+        return self.activation_function_derivative(self.weights @ self.inputs + self.biases)

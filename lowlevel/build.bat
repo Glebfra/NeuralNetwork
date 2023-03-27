@@ -1,2 +1,2 @@
-../venv/Scripts/activate
-@call python setup.py build --build-lib=build
+@call python ./LowLayers/setup.py build_ext --inplace
+@call python setup.py build_ext --inplace

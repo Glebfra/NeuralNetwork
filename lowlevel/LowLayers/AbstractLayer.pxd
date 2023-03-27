@@ -9,8 +9,10 @@ cdef class AbstractLayer:
 
     cpdef public int number_of_neurons
 
-    cdef AbstractLayer previous_layer;
+    cpdef AbstractLayer previous_layer;
     cpdef np.ndarray activation_function(self, np.ndarray x)
     cpdef np.ndarray activation_function_derivative(self, np.ndarray x)
 
     cpdef np.ndarray feed_forward(self, np.ndarray inputs)
+
+    cpdef np.ndarray get_derivative_error(self)
