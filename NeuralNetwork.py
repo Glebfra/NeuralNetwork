@@ -1,3 +1,5 @@
+from time import perf_counter
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -89,16 +91,20 @@ class NeuralNetwork(object):
 if __name__ == '__main__':
     network = NeuralNetwork.create_default_network(
         number_of_input_neurons=3,
-        number_of_hidden_neurons=2,
-        number_of_hidden_layers=1,
+        number_of_hidden_neurons=200,
+        number_of_hidden_layers=10,
         number_of_output_neurons=2
     )
     train_inputs = [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 1]]
     train_outputs = [[0], [1], [0], [1], [0], [1], [1]]
-    epochs = 5000
+    epochs = 1000
 
+    time1 = perf_counter()
     errors = network.train(train_inputs, train_outputs, epochs, learning_rate=0.02)
+    time2 = perf_counter()
     epochs = np.linspace(1, epochs, epochs)
+
+    print(f'Time consumed: {time2 - time1} seconds')
 
     print(network.feed_forward([1, 1, 0]))
     print(network.feed_forward([0, 1, 0]))
